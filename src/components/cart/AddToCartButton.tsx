@@ -1,23 +1,23 @@
 "use client";
 
-import { useCart } from "./CartProvider";
+import { useCart } from "@/hooks/useCart";
 
 export function AddToCartButton({
-  name,
-  price,
+    name,
+    price
 }: {
-  name: string;
-  price: number;
+    name: string,
+    price: number
 }) {
-  const { addToCart } = useCart();
+    const { addToCart } = useCart();
 
-  return (
-    <button
-      type="button"
-      onClick={() => addToCart(name, price)}
-      className="rounded bg-surface-container-high px-space-md py-space-xs font-label-caps text-label-caps uppercase tracking-wider text-secondary transition-all hover:bg-primary hover:text-on-primary"
-    >
-      Adicionar
-    </button>
-  );
-}
+    return (
+        <button
+            type="button"
+            onClick={() => addToCart(name, price)}
+            className="rounded bg-surface-container-high px-space-md py-space-xs font-label-caps text-label-caps uppercase tracking-wider text-secondary transition-all hover:bg-primary hover:text-on-primary"
+        >
+            Adicionar
+        </button>
+    );
+};
