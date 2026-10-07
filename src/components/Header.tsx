@@ -77,5 +77,5 @@ export function Header() {
                 <ArchiveButton />
             </div>
         </header>
-  );
+    );
 }

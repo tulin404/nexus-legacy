@@ -11,22 +11,22 @@ import { AboutSection } from "@/components/about/AboutSection";
 import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
-  return (
-    <CartProvider>
-      <Header />
+    return (
+        <CartProvider>
+            <Header />
 
-      <main className="w-full bg-surface pt-20 text-on-surface selection:bg-surface-variant selection:text-primary">
-        <HeroSection />
-        <KitHistorySection />
-        <GallerySection />
-        <RestorationSection />
-        <AboutSection />
-      </main>
+            <main className="w-full bg-surface pt-20 text-on-surface selection:bg-surface-variant selection:text-primary">
+                <HeroSection />
+                <KitHistorySection />
+                <GallerySection />
+                <RestorationSection />
+                <AboutSection />
+            </main>
 
-      <CartTrigger />
-      <CartDrawer />
-      <KitDossierModal />
-      <Footer />
-    </CartProvider>
+            <CartTrigger />
+            <CartDrawer />
+            <KitDossierModal />
+            <Footer />
+        </CartProvider>
   );
 }
