@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "../cart/CartProvider";
+import { useCart } from "@/hooks/useCart";
 
 const steps = [
   [

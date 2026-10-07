@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "./CartProvider";
+import { useCart } from "@/hooks/useCart";
 
 export function RequestKitButton() {
   const { requestKitBudget } = useCart();

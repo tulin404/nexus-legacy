@@ -1,7 +1,7 @@
 "use client";
 
 import { formatBRL } from "@/lib/formatters";
-import { useCart } from "./CartProvider";
+import { useCart } from "@/hooks/useCart";
 
 export function CartDrawer() {
   const {

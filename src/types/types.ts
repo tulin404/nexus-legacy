@@ -3,7 +3,7 @@ export type CartItem = {
     name: string,
     price: number,
     quantity: number,
-    category: string
+    category: string,
 };
 
 export type CartContextValue = {
@@ -22,5 +22,5 @@ export type CartContextValue = {
     toggleCartDrawer: () => void,
     openKitDossier: () => void,
     closeKitDossier: () => void,
-    checkoutViaWhatsApp: () => void
+    checkoutViaWhatsApp: () => void,
 };
