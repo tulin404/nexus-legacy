@@ -6,6 +6,8 @@ const links = [
 ] as const;
 
 export function Footer() {
+    const date = new Date();
+
     return (
         <footer className="w-full bg-surface-container-lowest">
             <div className="w-full px-margin-mobile py-space-xl lg:px-margin">
@@ -52,7 +54,7 @@ export function Footer() {
 
                 <div className="flex flex-col items-center justify-between gap-space-md border-t border-outline-variant/30 pt-space-lg sm:flex-row">
                     <span className="font-caption text-caption text-on-surface-variant">
-                        © 2025 Nexus Legacy Atelier. Todos os direitos reservados. Preservação de Patrimônio Institucional.
+                        © {date.getFullYear()} Nexus Legacy Atelier. Todos os direitos reservados. Preservação de Patrimônio Institucional.
                     </span>
                     <div className="flex items-center gap-space-md">
                         <span className="font-label-caps text-label-caps uppercase text-on-surface-variant">
