@@ -21,7 +21,7 @@ export function BeforeAfterSlider() {
         </span>
       </div>
 
-      <div className="relative aspect-square max-h-[580px] w-full cursor-ew-resize select-none overflow-hidden rounded-lg bg-surface-container-lowest">
+      <div className="relative aspect-square max-h-145 w-full cursor-ew-resize select-none overflow-hidden rounded-lg bg-surface-container-lowest">
         <img
           alt="Retrato arquivístico restaurado da Nexus Legacy"
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
@@ -29,7 +29,7 @@ export function BeforeAfterSlider() {
         />
 
         <div
-          className="pointer-events-none absolute inset-0 h-full w-full overflow-hidden"
+          className="pointer-events-none absolute inset-0 size-full overflow-hidden"
           style={{ clipPath: `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)` }}
         >
           <img
@@ -40,7 +40,7 @@ export function BeforeAfterSlider() {
         </div>
 
         <div
-          className="pointer-events-none absolute bottom-0 top-0 flex w-[2px] -translate-x-1/2 items-center justify-center bg-secondary shadow-[0_0_12px_rgba(123,208,255,0.8)]"
+          className="pointer-events-none absolute bottom-0 top-0 flex w-0.5 -translate-x-1/2 items-center justify-center bg-secondary shadow-[0_0_12px_rgba(123,208,255,0.8)]"
           style={{ left: `${position}%` }}
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-full border border-secondary bg-surface-container-lowest text-secondary shadow-2xl">
