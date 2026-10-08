@@ -1,7 +1,7 @@
 "use client";
 
 import { formatBRL } from "@/lib/formatters";
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useMemo, useState, type ReactNode } from "react";
 import type { CartItem, CartContextValue } from "@/types/types";
 
 export const CartContext = createContext<CartContextValue | null>(null);
