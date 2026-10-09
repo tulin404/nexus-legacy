@@ -1,6 +1,7 @@
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
 import Database from 'better-sqlite3';
 
+// SINGLETON
 @Injectable()
 export class DatabaseService implements OnModuleDestroy {
     private readonly db: Database.Database
