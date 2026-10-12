@@ -5,16 +5,16 @@ export class Product {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column("text")
     size: string;
 
-    @Column({ unique: true })
+    @Column("text", { unique: true })
     name: string;
 
-    @Column()
+    @Column("text")
     desc: string;
 
     // BUCKET URL
-    @Column()
+    @Column("text")
     img_url: string;
 };
