@@ -10,6 +10,7 @@ export class DatabaseService implements OnModuleDestroy {
         this.db = new Database("database.sqlite");
     };
 
+    // DB CONN GETTER
     getConnection(): Database.Database {
         return this.db
     };
