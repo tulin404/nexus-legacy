@@ -14,7 +14,7 @@ export class Product {
     @Column("text")
     desc: string;
 
-    // BUCKET URL
+    // FS IMAGE PATH
     @Column("text")
-    img_url: string;
+    img_path: string;
 };
