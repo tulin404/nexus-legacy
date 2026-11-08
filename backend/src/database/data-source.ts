@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 
+// CLI config
 const dataSource = new DataSource({
     type: "better-sqlite3",
     database: "database.sqlite",
