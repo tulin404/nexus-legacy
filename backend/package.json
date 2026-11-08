@@ -17,9 +17,9 @@
     "start:prod": "node dist/main",
 
     "typeorm": "tsx ./node_modules/typeorm/cli.js",
-    "migration:generate": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:generate -d typeorm.config.ts",
-    "migration:run": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:run -d typeorm.config.ts",
-    "migration:revert": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:revert -d typeorm.config.ts",
+    "migration:generate": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:generate -d src/database/data-source.ts",
+    "migration:run": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:run -d src/database/data-source.ts",
+    "migration:revert": "pnpm exec tsx ./node_modules/typeorm/cli.js migration:revert -d src/database/data-source.ts",
 
     "lint": "oxlint --type-aware src/ test/",
     "test": "vitest run",
