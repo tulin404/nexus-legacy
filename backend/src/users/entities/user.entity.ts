@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
+// No role since is admin only
 @Entity('users')
 export class User {
     @PrimaryGeneratedColumn('uuid')
