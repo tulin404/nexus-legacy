@@ -1,20 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("products")
+@Entity('products')
 export class Product {
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column("text")
+    @Column('text')
     size: string;
 
-    @Column("text", { unique: true })
+    @Column('text', { unique: true })
     name: string;
 
-    @Column("text")
+    @Column('text')
     desc: string;
 
     // FS IMAGE PATH
-    @Column("text")
+    @Column('text')
     img_path: string;
 };
