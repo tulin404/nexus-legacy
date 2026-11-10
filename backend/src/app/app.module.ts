@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '../users/entities/user.entity.js';
+import { User } from '../auth/entities/user.entity.js';
 import { Product } from '../products/entities/product.entity.js';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'node:path';
