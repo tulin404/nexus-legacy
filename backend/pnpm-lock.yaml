@@ -72,6 +72,9 @@ importers:
       '@types/better-sqlite3':
         specifier: ^9.6.0
         version: 9.6.0
+      '@types/connect-sqlite3':
+        specifier: ^0.9.6
+        version: 0.9.6
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.6
@@ -81,6 +84,9 @@ importers:
       '@types/node':
         specifier: ^24.0.0
         version: 24.19.1
+      '@types/sqlite3':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@types/supertest':
         specifier: ^7.0.0
         version: 7.2.1
@@ -941,6 +947,9 @@ packages:
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
 
+  '@types/connect-sqlite3@0.9.6':
+    resolution: {integrity: sha512-XTzIvdMu71UPtc2J38KAi02VB0wGk6mBwMDGQg1JxRhqr47Sau4sV7P+i2RbcDSP01K699QfXisR7gfRO9pH1Q==}
+
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
 
@@ -982,6 +991,10 @@ packages:
 
   '@types/serve-static@2.2.0':
     resolution: {integrity: sha512-8mam4H1NHLtu7nmtalF7eyBH14QyOASmcxHhSfEoRyr0nP/YdoesEtU+uSRvMe96TW/HPTtkoKqQLl53N7UXMQ==}
+
+  '@types/sqlite3@5.1.0':
+    resolution: {integrity: sha512-w25Gd6OzcN0Sb6g/BO7cyee0ugkiLgonhgGYfG+H0W9Ub6PUsC2/4R+KXy2tc80faPIWO3Qytbvr8gP1fU4siA==}
+    deprecated: This is a stub types definition. sqlite3 provides its own type definitions, so you do not need this installed.
 
   '@types/superagent@8.1.11':
     resolution: {integrity: sha512-KA7srSW/HENDtOw9DOqaFLgWuMqN9WgjEw62lh9dpvRaZDkhdOkazASd7X7i2eMUYLHa1U37ZttnePsH5zTDHw==}
@@ -3409,6 +3422,10 @@ snapshots:
       '@types/deep-eql': 4.0.2
       assertion-error: 2.0.1
 
+  '@types/connect-sqlite3@0.9.6':
+    dependencies:
+      '@types/express': 5.0.6
+
   '@types/connect@3.4.38':
     dependencies:
       '@types/node': 24.19.1
@@ -3456,6 +3473,10 @@ snapshots:
     dependencies:
       '@types/http-errors': 2.0.5
       '@types/node': 24.19.1
+
+  '@types/sqlite3@5.1.0':
+    dependencies:
+      sqlite3: 6.0.1
 
   '@types/superagent@8.1.11':
     dependencies:
