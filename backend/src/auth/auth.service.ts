@@ -39,4 +39,17 @@ export class AuthService {
             });
         });
     };
+
+    async getMe(userId: string) {
+        const user = await this.userRepository.findOneBy({ id: userId });
+        if (!user) {
+            throw new NotFoundException('User not found');
+        };
+
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+        };
+    };
 };

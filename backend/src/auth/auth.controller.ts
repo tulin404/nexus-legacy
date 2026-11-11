@@ -30,4 +30,10 @@ export class AuthController {
 
         return { message: 'Logout sucessful' };
     };
+
+    @Get('/me')
+    @UseGuards(AuthGuard)
+    getMe(@Session() session: Record<string, any>) {
+        return this.authService.getMe(session.id);
+    };
 };
