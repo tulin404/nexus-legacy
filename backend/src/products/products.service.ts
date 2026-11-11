@@ -4,16 +4,34 @@ import { UpdateProductDto } from './dto/update-product.dto.js';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity.js';
 import { Repository } from 'typeorm';
+import { extname, join } from 'node:path';
+import { randomUUID } from 'node:crypto';
+import { ConfigService } from '@nestjs/config';
+import { mkdir, writeFile } from 'node:fs/promises';
 
 @Injectable()
 export class ProductsService {
     constructor(
         @InjectRepository(Product)
-        private readonly productRepository: Repository<Product>
+        private readonly productRepository: Repository<Product>,
+        private readonly configService: ConfigService,
     ) {};
 
-    create(createProductDto: CreateProductDto) {
-        return 'This action adds a new product';
+    async create(
+        createProductDto: CreateProductDto,
+        file: Express.Multer.File,
+    ) {
+        const uploadPath = this.configService.get<string>('UPLOAD_PATH') ?? join(process.cwd(), 'uploads');
+        const filename = `${randomUUID()}${extname(file.originalname)}`;
+        const filepath = join(uploadPath, filename);
+
+        await mkdir(uploadPath, { recursive: true });
+        await writeFile(filepath, file.buffer);
+
+        await this.productRepository.save({
+            ...createProductDto,
+            img_name: filename
+        });
     };
 
     findAll() {
