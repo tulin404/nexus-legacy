@@ -11,7 +11,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isKitModalOpen, setIsKitModalOpen] = useState(false);
 
-    // Next was forcing the server pre render so useEffect to load the cart
+    // Next was forcing the server pre-render so useEffect to load the cart
     useEffect(() => {
         const cart = window.localStorage.getItem('cart');
         setItems(cart ? JSON.parse(cart) : []);
@@ -47,7 +47,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
             return updatedItems;
         });
         setIsDrawerOpen(true);
-        localStorage.setItem('cart', JSON.stringify(items));
     }, []);
 
 
@@ -93,15 +92,24 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }, []);
 
     const updateQuantity = useCallback((id: string, delta: number) => {
-            setItems((current) => current.flatMap((item) => {
+        setItems((current) => {
+            const updatedQuantity = current.flatMap((item) => {
                 if (item.id !== id) return [item];
                 const quantity = item.quantity + delta;
                 return quantity > 0 ? [{ ...item, quantity }] : [];
-            }));
+            });
+
+            localStorage.setItem('cart', JSON.stringify(updatedQuantity));
+            return updatedQuantity;
+        });
     }, []);
 
     const removeFromCart = useCallback((id: string) => {
-        setItems((current) => current.filter((item) => item.id !== id));
+        setItems((current) => {
+            const updatedItems = current.filter((item) => item.id !== id);
+            window.localStorage.setItem('cart', JSON.stringify(updatedItems));
+            return updatedItems;
+        });
     }, []);
 
     const checkoutViaWhatsApp = useCallback(() => {
