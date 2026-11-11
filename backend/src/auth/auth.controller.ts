@@ -1,13 +1,22 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { UsersService } from '../users/users.service.js';
+import { Body, Controller, Get, Post, Session } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto.js';
+import { AuthService } from './auth.service.js';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly userService: UsersService) {}
+    constructor(private readonly authService: AuthService) {}
 
     @Post('/login')
-    login(@Body() loginDto: LoginDto) {
+    async login(
+        @Body() loginDto: LoginDto,
+        @Session() session: Record<string, any>,
+    ) {
+        // Errors directly return up the chain
+        const user = await this.authService.login(loginDto);
 
+        session.userId = user.id;
+
+        // Object returning for convention
+        return { user };
     };
 };
