@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity.js';
 import argon2 from 'argon2';
+import { Session } from 'express-session';
 
 @Injectable()
 export class AuthService {
@@ -28,5 +29,14 @@ export class AuthService {
             name: user.name,
             email: user.email,
         };
+    };
+
+    async logout(session: Session) {
+        await new Promise<void>((resolve, reject) => {
+            session.destroy((err) => {
+                if (err) reject(err);
+                else resolve();
+            });
+        });
     };
 };
