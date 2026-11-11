@@ -14,7 +14,10 @@ export class Product {
     @Column('text')
     desc: string;
 
+    @Column('float')
+    price: number;
+
     // FS IMAGE PATH
     @Column('text')
-    img_path: string;
+    img_name: string;
 };
