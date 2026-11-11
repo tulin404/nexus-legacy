@@ -26,6 +26,7 @@ export function HeroSection() {
                 </div>
 
                 <div className="hidden items-center gap-space-md rounded border border-outline-variant/30 bg-surface-container-low/60 px-3 py-1.5 font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant backdrop-blur-md sm:flex">
+                    {/*<span>Edições Numeradas</span>*/}
                     <span>Edições Numeradas</span>
                     <span className="text-outline-variant">•</span>
                     <span>Norma ISO 18916</span>
@@ -37,7 +38,7 @@ export function HeroSection() {
             <div className="z-10 m-auto flex w-full max-w-5xl flex-col items-center py-space-lg text-center">
                 <div className="group relative mb-space-md">
                     <div className="absolute -inset-1 rounded-full bg-secondary/20 blur-xl transition-all duration-700 group-hover:bg-secondary/30" />
-                    <div className="relative flex size-28 items-center justify-center rounded-[100%] bg-linear-to-b from-secondary/40 via-surface-container-high/60 to-outline-variant/20 p-1 shadow-[0_0_50px_rgba(123,208,255,0.15)] backdrop-blur-md sm:size-36">
+                    <div className="relative flex size-28 items-center justify-center rounded-[100%] bg-linear-to-b from-secondary/40 via-surface-container-high/60 to-outline-variant/20 p-0.5 shadow-[0_0_50px_rgba(123,208,255,0.15)] backdrop-blur-md sm:size-36">
                         <img
                         src="/icon.webp"
                         alt="Nexus Legacy Monogram Emblem"
@@ -85,7 +86,7 @@ export function HeroSection() {
                     </span>
                     <span className="text-outline-variant">•</span>
                     <span className="font-label-caps text-[10px] uppercase tracking-widest">
-                        São Paulo · Zurique
+                        São Paulo · Franca
                     </span>
                 </div>
             </div>
