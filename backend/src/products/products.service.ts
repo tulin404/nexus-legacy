@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto.js';
 import { UpdateProductDto } from './dto/update-product.dto.js';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 import { extname, join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { ConfigService } from '@nestjs/config';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, unlink, writeFile } from 'node:fs/promises';
 
 @Injectable()
 export class ProductsService {
@@ -26,27 +26,58 @@ export class ProductsService {
         const filepath = join(uploadPath, filename);
 
         await mkdir(uploadPath, { recursive: true });
-        await writeFile(filepath, file.buffer);
 
-        await this.productRepository.save({
-            ...createProductDto,
-            img_name: filename
-        });
+        try {
+            await writeFile(filepath, file.buffer);
+
+            return await this.productRepository.save({
+                ...createProductDto,
+                img_name: filename
+            });
+        } catch(error) {
+            // Error supression for returning the original one
+            await unlink(filepath).catch(() => {});
+            throw error;
+        };
     };
 
     findAll() {
-        return `This action returns all products`;
+        return this.productRepository.find();
     };
 
-    findOne(id: number) {
-        return `This action returns a #${id} product`;
+    async findOne(id: string) {
+        const product = await this.productRepository.findOneBy({ id });
+        if (!product) {
+            throw new NotFoundException('Product not found');
+        };
+
+        return product;
     };
 
-    update(id: number, updateProductDto: UpdateProductDto) {
-        return `This action updates a #${id} product`;
+    async update(
+        id: string,
+        updateProductDto: UpdateProductDto,
+    ) {
+        const result = await this.productRepository.update(id, updateProductDto);
+        if (result.affected === 0) {
+            throw new NotFoundException('Product not found');
+        };
+
+        return result;
     };
 
-    remove(id: number) {
-        return `This action removes a #${id} product`;
+    async remove(id: string) {
+        const product = await this.productRepository.findOneBy({ id });
+        if (!product) {
+            throw new NotFoundException('Product not found');
+        };
+
+        const uploadPath = this.configService.get<string>('UPLOAD_PATH') ?? join(process.cwd(), 'uploads');
+        const filepath = join(uploadPath, product.img_name);
+
+        await this.productRepository.delete(id);
+        await unlink(filepath);
+
+        return product;
     };
 };
